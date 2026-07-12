@@ -1,0 +1,15 @@
+def pra(s,a,b):
+    bal=0
+    cost=0
+    for i in list(s):
+        if i=="(":
+            bal+=1
+        else:
+            if bal>0:
+                bal-=1
+            else:
+                cost+=a
+    if bal!=0:
+        cost+=(bal*b)
+    print(cost)
+pra("()())(",5,10)
