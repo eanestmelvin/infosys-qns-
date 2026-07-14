@@ -1,0 +1,9 @@
+from functools import lru_cache
+
+@lru_cache(None)
+def square(x):
+    print("Calculating...")
+    return x * x
+
+print(square(5))
+print(square(5))
