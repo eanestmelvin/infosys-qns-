@@ -1,0 +1,18 @@
+def solve(q, A):
+    for l, r, x, y in q:
+        for i in range(l, r + 1):
+            A[i] = x + (i - l) * y
+    return A
+x = solve(
+    [
+        [0,2,1,2],
+        [0,1,6,5],
+        [2,3,8,0],
+        [2,4,9,6],
+        [3,4,8,9],
+    ],
+    [5,5,0,3,0]
+)
+print(x)
+print(sum(x))
+            
