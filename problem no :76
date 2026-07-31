@@ -1,0 +1,26 @@
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        fre=Counter(t)
+        lwin=float("inf")
+        requ=len(fre)
+        mached=0
+        sta=0
+        left=0
+        for right in range(len(s)):
+            if s[right] in fre:
+                fre[s[right]]-=1
+                if fre[s[right]]==0:
+                    mached+=1
+            while(requ==mached):
+                if (right-left)+1<lwin:
+                    lwin=(right-left)+1
+                    sta=left
+                if s[left] in fre:
+                    fre[s[left]]+=1
+                    if fre[s[left]]>0:
+                        mached-=1
+                left+=1
+        if lwin==float("inf"):
+            return ""
+        else:
+            return s[sta:sta+lwin]
