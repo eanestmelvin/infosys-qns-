@@ -1,0 +1,14 @@
+class Solution:
+    def minInsertions(self, s: str) -> int:
+        mez={}
+        def par(l,r):
+            if (l,r) in mez:
+                return mez[(l,r)]
+            if (l>=r):
+                return 0
+            if s[l]==s[r]:
+                mez[(l,r)]=par(l+1,r-1)
+            else:
+                mez[(l,r)]=1+min(par(l+1,r),par(l,r-1))
+            return mez[(l,r)]
+        return par(0,len(s)-1)
